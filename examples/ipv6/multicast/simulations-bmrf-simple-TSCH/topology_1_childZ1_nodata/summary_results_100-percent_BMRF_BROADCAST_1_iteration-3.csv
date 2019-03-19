@@ -1,0 +1,15 @@
+PowerTracker: Extracted statistics:
+AVG ON 61.802614156862745s 28.59%
+AVG TX 0.019641549019607844s 0.01%
+AVG RX 0.019884490196078432s 0.01%
+AVG IDLE LISTENING 61.76308811764706s 7.8679093143499435%
+AVG INT 0s 0.00%
+
+Average end-to-end delay: NaN
+Packet delivery ratio: 0
+Frame transmission: 94.6
+Packet transmission: 94.6
+Rx time: 629575.8 = 19.213128662109376 s
+Tx time: 2714.4 = 0.0828369140625 s
+LPM time: 22568809.8 = 688.7454162597656 s
+CPU time: 139097.6 = 4.244921875 s
