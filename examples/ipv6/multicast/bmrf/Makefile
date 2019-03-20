@@ -1,4 +1,5 @@
 DEFINES+=PROJECT_CONF_H=\"project-conf.h\"
+PROJECT_SOURCEFILES += simstats.c
 UIP_CONF_IPV6=1
 
 CONTIKI_PROJECT = root intermediate sink internal-seed

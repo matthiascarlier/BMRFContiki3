@@ -31,11 +31,10 @@
 
 /**
  * \file
- *         Project specific configuration defines for the RPl multicast
- *         example.
+ *         Project specific configuration defines for the RPl multicast simulations
  *
  * \author
- *         George Oikonomou - <oikonomou@users.sourceforge.net>
+ *         Guillermo Gastón
  */
 
 #ifndef PROJECT_CONF_H_
@@ -44,9 +43,24 @@
 #include "net/ipv6/multicast/uip-mcast6-engines.h"
 
 /* Change this to switch engines. Engine codes in uip-mcast6-engines.h */
-#define UIP_MCAST6_CONF_ENGINE UIP_MCAST6_ENGINE_BMRF
-#define BMRF_CONF_MODE BMRF_MIXED_MODE
-#define BMRF_CONF_BROADCAST_THRESHOLD   2
+#define UIP_MCAST6_CONF_ENGINE	UIP_MCAST6_ENGINE_BMRF
+#define BMRF_CONF_MODE	BMRF_UNICAST_MODE
+#define BMRF_CONF_BROADCAST_THRESHOLD	1
+
+#undef UIP_CONF_IPV6			
+#define RPL_CONF_MOP RPL_MOP_STORING_MULTICAST
+#define UIP_CONF_IPV6	1
+#define RPL_WITH_MULTICAST 1
+			
+#define RPL_CONF_MULTICAST 1		
+
+//#define CONTIKIMAC_CONF_WITH_PHASE_OPTIMIZATION 1
+#define SICSLOWPAN_CONF_FRAG 0
+			
+//#define RPL_CONF_MOP RPL_MOP_STORING_MULTICAST		
+			
+#undef UIP_CONF_IPV6_MULTICAST				
+#define UIP_CONF_IPV6_MULTICAST 1
 
 /* For Imin: Use 16 over NullRDC, 64 over Contiki MAC */
 #define ROLL_TM_CONF_IMIN_1         64
@@ -58,6 +72,8 @@
 #define UIP_CONF_ND6_SEND_RA         0
 #define UIP_CONF_ROUTER              1
 #define UIP_MCAST6_ROUTE_CONF_ROUTES 8
+#define CSMA_CONF_MAX_NEIGHBOR_QUEUES UIP_MCAST6_ROUTE_CONF_ROUTES
+//#define QUEUEBUF_CONF_NUM 10
 
 #undef UIP_CONF_TCP
 #define UIP_CONF_TCP 0
@@ -65,10 +81,15 @@
 /* Code/RAM footprint savings so that things will fit on our device */
 #undef UIP_CONF_DS6_NBR_NBU
 #undef UIP_CONF_DS6_ROUTE_NBU
-#define UIP_CONF_DS6_NBR_NBU        5
-#define UIP_CONF_DS6_ROUTE_NBU      5
+#define UIP_CONF_DS6_NBR_NBU        10
+#define UIP_CONF_DS6_ROUTE_NBU      10
 
-#undef UIP_CONF_MAX_ROUTES
-#define UIP_CONF_MAX_ROUTES 20
+/* Enable simulation stats */
+#define SIMSTATS_CONF_ENABLED 1
+
+/* Simulation parameters */
+#define MCAST_CONF_MESSAGES 100
+#define MCAST_CONF_SEND_INTERVAL 5
+#define MCAST_CONF_START_DELAY 30
 
 #endif /* PROJECT_CONF_H_ */
